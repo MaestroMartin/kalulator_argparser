@@ -1,50 +1,40 @@
-import math
+
 import argparse
 
+def kalkulator(args):
 
-def addition(number1,number2):
-    return number1 + number2
+    if args.operation == "addition" :
+        result = args.number1 + args.number2
+        print(f"resoult = {args.number1} + {args.number2} = {result}")
 
-def substraction(number1,number2):
-    return number1 - number2 
+    elif args.operation == "substraction":
+        result = args.number1 - args.number2
+        print(f"resoult = {args.number1} - {args.number2} = {result}")
 
-def multiplication(number1,number2):
-    return number1 * number2
+    elif args.operation == "multiplication":
+        result = args.number1 * args.number2 
+        print(f"resoult = {args.number1} * {args.number2} = {result}")
 
-def division(number1,number2):
-    if number2 != 0:
-        return number1 /number2
+    elif args.operation == "division":
+        if args.number1 != 0:
+            result = args.number1 / args.number2
+            print(f"resoult = {args.number1} / {args.number2} = {result}")
+        else:
+            return ValueError
     else:
-        return ValueError
+        print("Wrong operation" )
 
-def kalkulator():
-    print("Velcome in Kalkulator, please choose number: ")
-    print("1 = addition ")
-    print("2 = substraction")
-    print("3 = multiplication")
-    print("4 = division")
+if __name__ == "__main__":
 
-    try: 
-        number1 = float(input("enter your first number: "))
-        choose = int(input())
-        number2 = float(input("enter your second number: "))
+    parser =  argparse.ArgumentParser(description= "Welcome in Kalkulator")
 
-        if choose == 1:
-            print( f"result is {addition(number1,number2)}")
+    parser.add_argument("Operation", type=str, choices=["addition", "substraction", "multiplication", "division"], 
+        help="Operation witch you prefer to use (addition, substraction, multiplication, division)")
 
-        if choose == 2:
-            print( f"result is {substraction(number1,number2)}")
+    parser.add_argument("number1", type=float, help= "frist number")
+    parser.add_argument("number2", type=float, help= "second number")
 
-        if choose == 3:
-            print( f"result is {multiplication(number1,number2)}")  
+    args = parser.parse_args()
 
-        if choose == 4:
-             print( f"result is {division(number1,number2)}")
+    kalkulator(args)
 
-    except  ValueError:
-        print("EROR: entered values not right numbers")
-
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
-
-kalkulator()
