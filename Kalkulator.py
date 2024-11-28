@@ -5,22 +5,22 @@ def kalkulator(args):
 
     if args.operation == "addition" :
         result = args.number1 + args.number2
-        print(f"resoult = {args.number1} + {args.number2} = {result}")
+        print(f"result = {args.number1} + {args.number2} = {result}")
 
     elif args.operation == "substraction":
         result = args.number1 - args.number2
-        print(f"resoult = {args.number1} - {args.number2} = {result}")
+        print(f"result = {args.number1} - {args.number2} = {result}")
 
     elif args.operation == "multiplication":
         result = args.number1 * args.number2 
-        print(f"resoult = {args.number1} * {args.number2} = {result}")
+        print(f"result = {args.number1} * {args.number2} = {result}")
 
     elif args.operation == "division":
-        if args.number1 != 0:
-            result = args.number1 / args.number2
-            print(f"resoult = {args.number1} / {args.number2} = {result}")
-        else:
+        if args.number2 == 0:
             return ValueError
+        else:
+            result = args.number1 / args.number2
+            print(f"result = {args.number1} / {args.number2} = {result}")
     else:
         print("Wrong operation" )
 
