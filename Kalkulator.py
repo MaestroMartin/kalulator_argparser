@@ -5,7 +5,7 @@ import argparse
 choice1 = float(input("Enter your number: "))
 
 operations = input("enter your operations => /, *, -, + = :")
-operators = ("/","*","-" )
+
 choice2 = float(input("Enter your second number: "))
 
 def result():
@@ -24,6 +24,7 @@ def result():
                 if "/" in operations:
                     choice1 and choice2 != 0
                     breakpoint
+                    print("you dont division by 0")
                 else:
                     print(choice1 / choice2)
 
