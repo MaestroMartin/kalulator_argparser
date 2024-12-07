@@ -1,6 +1,6 @@
-
+import time
 import argparse
-
+import pytest
 def kalkulator(args):
 
     if args.operation == "addition" :
@@ -38,3 +38,21 @@ if __name__ == "__main__":
 
     kalkulator(args)
 
+@pytest.mark.parametrize(
+    ('args.number1', 'args.number2', 'expected'),
+   [
+        (3, 5, "addition", 8),
+        (5, 9, "substraction", -4),
+        (5, 0, "division", None),  # Division by zero may return None
+        (6, 2, "multiplication", 12),
+    ]
+)
+
+def test_kalkulator(number1, number2, operator, expected):
+    class Args:
+        pass
+    args = Args()
+    args.number1 = number1
+    args.number2 = number2
+    args.operator = operator
+    assert kalkulator(args) == expected
